@@ -12,12 +12,12 @@ export const Login: React.FC = () => {
             <TextField
               fullWidth
               type="email"
-              label='Email'
+              label='E-mail'
             />
 
             <TextField
               fullWidth
-              label='Senha'
+              label='Password'
               type="password"
             />
           </Box>
@@ -28,7 +28,7 @@ export const Login: React.FC = () => {
             <Button
               variant="contained"
             >
-              Entrar
+              SigIn
             </Button>
           </Box>
         </CardActions>
