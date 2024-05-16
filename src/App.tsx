@@ -1,27 +1,32 @@
 import React from 'react';
 import { Login } from './shared/components';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AppRoutes } from "./shared/routes";
 
 const App: React.FC = () => {
   return (
-    <Login /> 
+      <BrowserRouter>
+        <Routes>
+          <Route path="/*" element={<LoginWrapper />} />
+        </Routes>
+      </BrowserRouter>
   );
 };
 
 export default App;
 
 
-// const LoginWrapper = () => {
-//   const { isAuthenticated }: { isAuthenticated: boolean } = useAuthContext();
+const LoginWrapper = () => {
+  // const { isAuthenticated }: { isAuthenticated: boolean } = useAuthContext();
 
-//   if (isAuthenticated) {
-//     return (
-//       <AppDrawerProvider>
-//         <MenuDrawer>
-//           <AppRoutes />
-//         </MenuDrawer>
-//       </AppDrawerProvider>
-//     );
-//   } else {
-//     return <Login />;
-//   }
-// };
+  let isAuthenticated = true
+
+  if (isAuthenticated) {
+    return (
+      <AppRoutes />
+    );
+  } else {
+    return <Login />;
+  }
+  // return <Login />;
+};
