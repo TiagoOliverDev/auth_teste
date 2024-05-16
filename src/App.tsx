@@ -1,14 +1,27 @@
 import React from 'react';
+import { Login } from './shared/components';
 
 const App: React.FC = () => {
   return (
-    <div className="bg-gray-100 h-screen flex items-center justify-center">
-      <div className="bg-white p-8 rounded shadow-md">
-        <h1 className="text-2xl font-bold mb-4">Hello, Tailwind CSS!</h1>
-        <p className="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
-    </div>
+    <Login /> 
   );
 };
 
 export default App;
+
+
+// const LoginWrapper = () => {
+//   const { isAuthenticated }: { isAuthenticated: boolean } = useAuthContext();
+
+//   if (isAuthenticated) {
+//     return (
+//       <AppDrawerProvider>
+//         <MenuDrawer>
+//           <AppRoutes />
+//         </MenuDrawer>
+//       </AppDrawerProvider>
+//     );
+//   } else {
+//     return <Login />;
+//   }
+// };
