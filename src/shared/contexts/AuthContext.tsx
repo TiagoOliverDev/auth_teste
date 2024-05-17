@@ -33,19 +33,28 @@ export const AuthProvider: React.FC<IAuthProvideProps> = ({ children }) => {
     })
 
     const handleLogin = useCallback(async (email: string, password: string) => {
-        const result = await AuthService.auth(email, password);
+        try {
+            const result = await AuthService.auth(email, password);
     
-        if (result instanceof Error) {
-            return result.message;
-        } else {
+            if (result instanceof Error) {
+                return result.message;
+            }
+
             localStorage.setItem(LOCAL_STORAGE_KEY_ACCESS_TOKEN, result.BearerToken);
-            
             localStorage.setItem(LOCAL_STORAGE_KEY_USER_ID, String(result.id_user));
-    
+            
             setAccessToken(result.BearerToken);
             setUserId(result.id_user);
-
+            
             return 'Login successful'; 
+        } catch (error) {
+            if (error instanceof Error) {
+                console.error('Erro durante a autenticação:', error);
+                return error.message;
+            } else {
+                console.error('Erro desconhecido durante a autenticação:', error);
+                return 'An unknown error occurred';
+            }
         }
     
     }, []);
