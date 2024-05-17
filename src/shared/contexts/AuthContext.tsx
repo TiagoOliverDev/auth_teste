@@ -60,10 +60,22 @@ export const AuthProvider: React.FC<IAuthProvideProps> = ({ children }) => {
     }, []);
 
     const handleLogout = useCallback(() => {
-        localStorage.removeItem(LOCAL_STORAGE_KEY_ACCESS_TOKEN);
-        localStorage.removeItem(LOCAL_STORAGE_KEY_USER_ID);
-        setAccessToken(undefined);
-        setUserId(undefined);
+        try {
+            localStorage.removeItem(LOCAL_STORAGE_KEY_ACCESS_TOKEN);
+            localStorage.removeItem(LOCAL_STORAGE_KEY_USER_ID);
+            setAccessToken(undefined);
+            setUserId(undefined);
+
+            return 'Logout successful';
+        } catch (error) {
+            if (error instanceof Error) {
+                console.error('Erro durante o logout:', error);
+                return error.message;
+            } else {
+                console.error('Erro desconhecido durante o logout:', error);
+                return 'An unknown error occurred during logout';
+            }
+        }
     }, []);
     
     const isAuthenticated = useMemo(() => !!accessToken, [accessToken])
