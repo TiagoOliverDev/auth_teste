@@ -1,12 +1,19 @@
 import React from 'react';
-import { Box, Card, CardContent, CardActions, Typography, TextField, Button, Avatar } from '@mui/material';
+import { Box, Card, CardContent, Typography, TextField, Avatar } from '@mui/material';
 import { LayoutBasePages } from '../../shared/layouts';
 import { DetailTools } from '../../shared/components/detailsTools/DetailTools';
-import { useNavigate, useParams } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
+import { useAuthContext } from '../../shared/contexts';
+ 
 export const Home: React.FC = () => {
 
     const navigate = useNavigate()
+    const { logout } = useAuthContext()
+
+    const handleLogout = () => {
+        logout()
+        navigate("/")
+    }
     
     return(
         <LayoutBasePages
@@ -14,7 +21,7 @@ export const Home: React.FC = () => {
                 <DetailTools 
                     textButtonLogout='Logout'
                     showButtonLogout
-                    whenCilickingButtonLogout={() => navigate("/")} 
+                    whenCilickingButtonLogout={() => handleLogout()} 
                 />
             }
         >
