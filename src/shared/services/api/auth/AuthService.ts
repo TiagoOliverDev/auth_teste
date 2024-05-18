@@ -4,11 +4,12 @@ import { API } from "../axiosConfig";
 
 const auth = async (email: string, password: string): Promise<IAuthProps | Error> => {
     try{
-        const { data } = await API.post<IAuthProps>("/auth/login", {email, password});
-
-        if (data) {
-            return data;
-        };
+        const response = await API.post<IAuthProps>("/auth/login/", { email, password });
+        
+        if (response && response.data) {
+            console.log(response.data);
+            return response.data;
+        }
             
         return new Error("Erro no login.");
     }catch(error){

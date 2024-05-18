@@ -35,16 +35,17 @@ export const AuthProvider: React.FC<IAuthProvideProps> = ({ children }) => {
     const handleLogin = useCallback(async (email: string, password: string) => {
         try {
             const result = await AuthService.auth(email, password);
-    
+            
             if (result instanceof Error) {
+                console.error("Erro no login:", result.message);
                 return result.message;
             }
 
-            localStorage.setItem(LOCAL_STORAGE_KEY_ACCESS_TOKEN, result.BearerToken);
-            localStorage.setItem(LOCAL_STORAGE_KEY_USER_ID, String(result.id_user));
+            localStorage.setItem(LOCAL_STORAGE_KEY_ACCESS_TOKEN, result.tokens.access);
+            localStorage.setItem(LOCAL_STORAGE_KEY_USER_ID, String(result.user.id));
             
-            setAccessToken(result.BearerToken);
-            setUserId(result.id_user);
+            setAccessToken(result.tokens.access);
+            setUserId(result.user.id);
             
             return 'Login successful'; 
         } catch (error) {
