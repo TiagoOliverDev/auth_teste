@@ -7,7 +7,6 @@ const auth = async (email: string, password: string): Promise<IAuthProps | Error
         const response = await API.post<IAuthProps>("/auth/login/", { email, password });
         
         if (response && response.data) {
-            console.log(response.data);
             return response.data;
         }
             

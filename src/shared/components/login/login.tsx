@@ -23,8 +23,6 @@ export const Login: React.FC = () => {
 
   const handleSubmit = () => {
     setIsLoading(true)
-    console.log(email)
-    console.log(password)
 
     loginSchema
     .validate({ email, password }, { abortEarly: false })

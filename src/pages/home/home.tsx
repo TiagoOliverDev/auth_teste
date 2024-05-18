@@ -34,7 +34,6 @@ export const Home: React.FC = () => {
                     setName(result.name);
                     setEmail(result.email);
                     setPhotoProfile(result.avatar.high)
-                    console.log(result)
                 } else {
                     console.error('Dados do usuário não estão disponíveis ou incompletos.');
                 }
