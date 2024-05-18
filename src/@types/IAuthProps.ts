@@ -1,5 +1,21 @@
+interface IUser {
+  id: number;
+  name: string;
+  email: string;
+  is_active: boolean;
+  avatar: string | null;
+  type: string;
+  created: string;
+  modified: string;
+  role: string;
+}
+  
+interface ITokens {
+  refresh: string;
+  access: string;
+}
+  
 export interface IAuthProps {
-    BearerToken: string;
-    id_user: number;
-    type_permission: number;
+  user: IUser;
+  tokens: ITokens;
 }
