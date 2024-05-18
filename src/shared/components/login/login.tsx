@@ -35,9 +35,13 @@ export const Login: React.FC = () => {
 
   return (
     <Box className="w-screen h-screen flex items-center justify-center">
-      <Card>
-        <CardContent>
-          <Box className="flex flex-col gap-2 w-72">
+      <Card 
+        className='w-[534px] h-[438px]'
+        style={{borderRadius: 18}}
+      >
+        {/* <CardContent style={{width: 385.88, height: 288, top: 205.88, left: 25.88, borderRadius: 9}}> */}
+        <CardContent >
+          <Box className="flex flex-col items-center justify-center gap-y-8 w-full h-full">
             <Typography variant="h6" align="center">b2bit</Typography>
 
             <form onSubmit={formik.handleSubmit}>
@@ -64,6 +68,8 @@ export const Login: React.FC = () => {
               <CardActions>
                 <Box className="w-full flex justify-center">
                   <Button
+                    className="w-[385.88px] h-[54px] flex items-center"
+                    style={{backgroundColor: '#02274F', borderRadius: 9}}
                     variant="contained"
                     disabled={isLoading}
                     type="submit"

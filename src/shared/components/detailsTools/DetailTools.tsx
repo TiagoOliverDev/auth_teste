@@ -26,6 +26,7 @@ export const DetailTools: React.FC<IDetailToolsProps> = ({
         >
             {(showButtonLogout) && (
                 <Button
+                    className="bg-[#02274F] text-white py-2 px-4 flex items-center gap-2 rounded shadow-none hover:bg-[#011f3e] focus:outline-none"
                     variant="contained"
                     color="primary"
                     disableElevation
