@@ -2,15 +2,15 @@ import { API } from "../axiosConfig";
 import { IDetaisUser } from "../../../../@types/IDetaisUser";
 
 
-const getById = async (id: number): Promise<IDetaisUser | Error> => {
+const getByToken = async (): Promise<IDetaisUser | Error> => {
     try {
-        const urlRelative = `/auth/profile/${id}`;
+        const urlRelative = `/auth/profile/`;
         
-        const { data } = await API.get(urlRelative);
+        const response = await API.get(urlRelative);
 
-        if (data && data.user) {
-            return data.user[0];
-        };
+        if (response && response.data) {
+            return response.data;
+        }
 
         return new Error("Erro ao retornar dados do usuário!");
 
@@ -22,5 +22,5 @@ const getById = async (id: number): Promise<IDetaisUser | Error> => {
 
 
 export const UserService = {
-    getById,
+    getByToken,
 };
