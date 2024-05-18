@@ -1,34 +1,28 @@
 import React from 'react';
 import { Box, Card, CardContent, CardActions, Typography, TextField, Button, CircularProgress } from '@mui/material';
-import { useAuthContext } from '../../contexts';
 import { useState } from "react";
-import * as yup from 'yup'
-
+import { useAuthContext } from '../../contexts';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
 
 const loginSchema = yup.object().shape({
-  email: yup.string().email().required(),
-  password: yup.string().required().min(5),
-})
+  email: yup.string().email('Email inválido').required('Email é obrigatório'),
+  password: yup.string().required('Senha é obrigatória').min(5, 'A senha deve ter pelo menos 5 caracteres'),
+});
 
 export const Login: React.FC = () => {
-
   const { login } = useAuthContext();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-
-  const handleSubmit = () => {
-    setIsLoading(true)
-
-    loginSchema
-    .validate({ email, password }, { abortEarly: false })
-    .then(dadosValidados => {
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validationSchema: loginSchema,
+    onSubmit: (values) => {
       setIsLoading(true);
-      login(dadosValidados.email, dadosValidados.password)
+      login(values.email, values.password)
         .then(() => {
           setIsLoading(false);
         })
@@ -36,22 +30,8 @@ export const Login: React.FC = () => {
           setIsLoading(false);
           console.error('Erro durante o login:', error);
         });
-    })
-    .catch((errors: yup.ValidationError) => {
-      setIsLoading(false);
-      if (errors.inner) {
-        errors.inner.forEach(error => {
-          if (error.path === 'email') {
-            setEmailError(error.message);
-          } else if (error.path === 'password') {
-            setPasswordError(error.message);
-          }
-        });
-      } else {
-        console.error('Erro de validação inesperado:', errors);
-      }
-    });
-  }
+    },
+  });
 
   return (
     <Box className="w-screen h-screen flex items-center justify-center">
@@ -60,44 +40,42 @@ export const Login: React.FC = () => {
           <Box className="flex flex-col gap-2 w-72">
             <Typography variant="h6" align="center">b2bit</Typography>
 
-            <TextField
-              fullWidth
-              type="email"
-              label='E-mail'
-              value={email}
-              disabled={isLoading}
-              error={!!emailError}
-              helperText={emailError}
-              onKeyDown={() => setEmailError('')}
-              onChange={e => setEmail(e.target.value)}
-            />
+            <form onSubmit={formik.handleSubmit}>
+              <TextField
+                fullWidth
+                type="email"
+                label='E-mail'
+                {...formik.getFieldProps('email')}
+                disabled={isLoading}
+                error={formik.touched.email && Boolean(formik.errors.email)}
+                helperText={formik.touched.email && formik.errors.email}
+              />
 
-            <TextField
-              fullWidth
-              label='Password'
-              type="password"
-              value={password}
-              disabled={isLoading}
-              error={!!passwordError}
-              helperText={passwordError}
-              onKeyDown={() => setPasswordError('')}
-              onChange={e => setPassword(e.target.value)}
-            />
+              <TextField
+                fullWidth
+                label='Senha'
+                type="password"
+                {...formik.getFieldProps('password')}
+                disabled={isLoading}
+                error={formik.touched.password && Boolean(formik.errors.password)}
+                helperText={formik.touched.password && formik.errors.password}
+              />
+
+              <CardActions>
+                <Box className="w-full flex justify-center">
+                  <Button
+                    variant="contained"
+                    disabled={isLoading}
+                    type="submit"
+                    endIcon={isLoading ? <CircularProgress size={20} variant="indeterminate" color="inherit" /> : undefined}
+                  >
+                    Sign In
+                  </Button>
+                </Box>
+              </CardActions>
+            </form>
           </Box>
         </CardContent>
-
-        <CardActions>
-          <Box className="w-full flex justify-center">
-            <Button
-              variant="contained"
-              disabled={isLoading}
-              onClick={handleSubmit}
-              endIcon={isLoading ? <CircularProgress size={20} variant="indeterminate" color="inherit" /> : undefined}
-            >
-              SigIn
-            </Button>
-          </Box>
-        </CardActions>
       </Card>
     </Box>
   );
