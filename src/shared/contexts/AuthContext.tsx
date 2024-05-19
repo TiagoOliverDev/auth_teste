@@ -6,7 +6,7 @@ import { IAuthProvideProps } from "../../@types/IAuthProvideProps";
 
 
 
-const AuthContext = createContext({} as IAuthContextData ) // injetando as props de IAuthContextData no context
+export const AuthContext = createContext({} as IAuthContextData ) // injetando as props de IAuthContextData no context
 
 const LOCAL_STORAGE_KEY_ACCESS_TOKEN = 'APP_ACCESS_TOKEN'
 const LOCAL_STORAGE_KEY_USER_ID = 'APP_USER_ID';
@@ -33,6 +33,7 @@ export const AuthProvider: React.FC<IAuthProvideProps> = ({ children }) => {
     })
 
     const handleLogin = useCallback(async (email: string, password: string) => {
+        
         try {
             const result = await AuthService.auth(email, password);
             
