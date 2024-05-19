@@ -53,10 +53,13 @@ export const Home: React.FC = () => {
             }
         >
 
-            <Box className="w-screen h-screen flex items-center justify-center">
-                <Card>
+            <Box className="flex items-center justify-center w-full h-full min-h-screen overflow-hidden">
+                <Card
+                    className='w-[396px] h-[355px] rounded-lg'
+                    style={{borderRadius: 16}}
+                >
                     <CardContent>
-                        <Box className="flex flex-col gap-2 w-72">
+                        <Box className="flex flex-col gap-2 w-full">
                         <Typography variant="h4" align="center">Profile Picture</Typography>
                         <Avatar alt="Nome do Usuário" src={photoProfile} />
                         
