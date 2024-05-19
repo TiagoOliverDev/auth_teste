@@ -1,4 +1,3 @@
-// jest.config.js
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
@@ -9,6 +8,6 @@ module.exports = {
     "<rootDir>/node_modules/(?!axios)"
   ],
   moduleNameMapper: {
-    // se estiver usando mapeamento de módulos, configure aqui
+
   }
 };
