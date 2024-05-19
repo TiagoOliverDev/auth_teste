@@ -1,10 +1,11 @@
 import React from 'react';
-import { Box, Card, CardContent, CardActions, Typography, TextField, Button, CircularProgress, InputLabel } from '@mui/material';
+import { Box, Card, CardContent, CardActions, TextField, Button, CircularProgress, InputLabel } from '@mui/material';
 import { useState } from "react";
 import { useAuthContext } from '../../contexts';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import '../../../index.css'
+
 
 
 const b2bitLogo = 'LOGOTIPO.svg'
