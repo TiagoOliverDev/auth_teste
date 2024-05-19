@@ -60,8 +60,10 @@ export const Home: React.FC = () => {
                 >
                     <CardContent>
                         <Box className="flex flex-col gap-2 w-full">
-                        <Typography variant="h4" align="center">Profile Picture</Typography>
-                        <Avatar alt="Nome do Usuário" src={photoProfile} />
+                        <Typography variant="h4" align="center" fontSize="16px">Profile Picture</Typography>
+                        <Box className="flex items-center justify-center">
+                            <Avatar style={{borderRadius: 8, width: 58, height: 56}} alt="Nome do Usuário" src={photoProfile} />
+                        </Box>
                         
                         <TextField
                             fullWidth
