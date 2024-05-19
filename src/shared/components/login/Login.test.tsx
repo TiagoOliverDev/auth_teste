@@ -105,21 +105,19 @@ describe('Login Component logout', () => {
         });
     
         expect(context.isAuthenticated).toBe(true);
-    
+        
         const removeItemSpy = jest.spyOn(Storage.prototype, 'removeItem');
     
         await act(async () => {
             context.logout();
         });
-    
+        
         expect(context.isAuthenticated).toBe(false);
         expect(context.id_user).toBeUndefined();
-    
+        
         expect(removeItemSpy).toHaveBeenCalledWith('APP_ACCESS_TOKEN');
         expect(removeItemSpy).toHaveBeenCalledWith('APP_USER_ID');
     
         removeItemSpy.mockRestore();
     });
 });
-
-
