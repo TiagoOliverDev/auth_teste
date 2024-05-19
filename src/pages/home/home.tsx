@@ -7,7 +7,6 @@ import { useAuthContext } from '../../shared/contexts';
 import { UserService } from '../../shared/services/api/user/UserService';
 
 
-
 export const Home: React.FC = () => {
 
     const [name, setName] = useState<string>('')

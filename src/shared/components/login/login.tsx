@@ -69,11 +69,11 @@ export const Login: React.FC = () => {
                 <Box className="w-full flex justify-center">
                   <Button
                     className="w-[385.88px] h-[54px] flex items-center"
-                    style={{backgroundColor: '#02274F', borderRadius: 9}}
+                    // style={{backgroundColor: '#02274F', borderRadius: 9}}
                     variant="contained"
                     disabled={isLoading}
                     type="submit"
-                    endIcon={isLoading ? <CircularProgress size={20} variant="indeterminate" color="inherit" /> : undefined}
+                    endIcon={isLoading ? <CircularProgress size={20} variant="indeterminate" role="progressbar" color="inherit" /> : undefined}
                   >
                     Sign In
                   </Button>

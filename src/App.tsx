@@ -20,7 +20,7 @@ export default App;
 
 
 const LoginWrapper = () => {
-  const { isAuthenticated }: { isAuthenticated: boolean } = useAuthContext();
+  const { isAuthenticated } = useAuthContext();
 
   if (isAuthenticated) {
     return (
