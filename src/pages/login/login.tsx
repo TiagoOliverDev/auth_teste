@@ -78,44 +78,49 @@ export const Login: React.FC = () => {
         >
           <CardContent>
             <Box className="flex flex-col items-center justify-center gap-y-8 w-full h-full">
-              <img src={b2bitLogo} alt="B2bit Logo" style={{ width: 309.6, height: 94.81, marginBottom: '33px', marginTop: '43px' }} />
+              <img src={b2bitLogo} alt="B2bit Logo" style={{ width: 309.6, height: 94.81, marginBottom: '33px', marginTop: '34px' }} />
             </Box>
 
             <Box>
               <form onSubmit={formik.handleSubmit}>
-                <LabelGeneral htmlFor='Idemail' title='E-mail' />
-                <TextField
-                    role="E-mail"
-                    id='Idemail'
-                    fullWidth
-                    type="email"
-                    variant="filled"
-                    placeholder="@gmail.com"
-                    {...formik.getFieldProps('email')}
-                    disabled={isLoading}
-                    error={formik.touched.email && Boolean(formik.errors.email)}
-                    helperText={formik.touched.email && formik.errors.email}
-                    style={{ marginBottom: '25px', borderRadius: 15 }} 
-                />
+                <Box>
+                  <LabelGeneral htmlFor='Idemail' title='E-mail' />
+                  <TextField
+                      role="E-mail"
+                      id='Idemail'
+                      fullWidth
+                      type="email"
+                      variant="filled"
+                      placeholder="@gmail.com"
+                      {...formik.getFieldProps('email')}
+                      disabled={isLoading}
+                      error={formik.touched.email && Boolean(formik.errors.email)}
+                      helperText={formik.touched.email && formik.errors.email}
+                      style={{ marginBottom: '23px', borderRadius: 15 }} 
+                  />
+                </Box>
 
-                <LabelGeneral htmlFor='Idpassword' title='Password' />
-                <TextField
-                    role="Password"
-                    id='Idpassword'
-                    fullWidth
-                    type="password"
-                    variant="filled"
-                    placeholder="***************"
-                    {...formik.getFieldProps('password')}
-                    disabled={isLoading}
-                    error={formik.touched.password && Boolean(formik.errors.password)}
-                    helperText={formik.touched.password && formik.errors.password}
-                    style={{ marginBottom: '32px', borderRadius: 15 }} 
-                />
+                <Box>
+                  <LabelGeneral htmlFor='Idpassword' title='Password' />
+                  <TextField
+                      role="Password"
+                      id='Idpassword'
+                      fullWidth
+                      type="password"
+                      variant="filled"
+                      placeholder="***************"
+                      {...formik.getFieldProps('password')}
+                      disabled={isLoading}
+                      error={formik.touched.password && Boolean(formik.errors.password)}
+                      helperText={formik.touched.password && formik.errors.password}
+                      style={{ marginBottom: '23px', borderRadius: 15 }} 
+                  />
+                </Box>
+
                 <CardActions>
                   <Box className="w-full flex justify-center">
                     <Button
-                      className="w-[385.88px] h-[54px] flex items-center"
+                      className="fixed w-[385.88px] h-[54px] flex items-center"
                       style={{backgroundColor: '#02274F', borderRadius: 9}}
                       variant="contained"
                       disabled={isLoading}
