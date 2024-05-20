@@ -5,7 +5,7 @@ import { useAuthContext } from '../../contexts';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import '../../../index.css'
-
+import { LabelGeneral } from './labelGeneral';
 
 
 const b2bitLogo = 'LOGOTIPO.svg'
@@ -62,19 +62,8 @@ export const Login: React.FC = () => {
 
             <Box>
               <form onSubmit={formik.handleSubmit}>
-              <InputLabel
-                htmlFor="Idemail"
-                style={{
-                  marginBottom: '9px',
-                  fontSize: '18px', 
-                  fontWeight: 700, 
-                  lineHeight: '22.5px',
-                  textAlign: 'left',
-                  color: '#262626'
-                }}
-              >
-                E-mail
-              </InputLabel>
+
+              <LabelGeneral htmlFor='Idemail' title='E-mail' />
               <TextField
                 role="E-mail"
                 id='Idemail'
@@ -89,19 +78,7 @@ export const Login: React.FC = () => {
                 style={{ marginBottom: '25px', borderRadius: 15 }} 
               />
 
-              <InputLabel
-                htmlFor="Idpassword"
-                style={{
-                  marginBottom: '9px',
-                  fontSize: '18px', 
-                  fontWeight: 700, 
-                  lineHeight: '22.5px',
-                  textAlign: 'left',
-                  color: '#262626'
-                }}
-              >
-                Password
-              </InputLabel>
+              <LabelGeneral htmlFor='Idpassword' title='Password' />
               <TextField
                 role="Password"
                 id='Idpassword'
