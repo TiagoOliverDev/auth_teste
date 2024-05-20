@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Box, Card, CardContent, CardActions, TextField, Button, CircularProgress } from '@mui/material';
 import { useState } from "react";
 import { useAuthContext } from '../../contexts';
@@ -6,6 +6,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import '../../../index.css'
 import { LabelGeneral } from './labelGeneral';
+import { AlertGeneral } from '../alert/alertGeneral';
 
 
 const b2bitLogo = 'LOGOTIPO.svg'
@@ -19,6 +20,7 @@ const loginSchema = yup.object().shape({
 export const Login: React.FC = () => {
   const { login } = useAuthContext();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [showAlertError, setShowAlertError] = useState<boolean>(false);
 
   const formik = useFormik({
     initialValues: {
@@ -26,33 +28,54 @@ export const Login: React.FC = () => {
       password: '',
     },
     validationSchema: loginSchema,
-    onSubmit: (values) => {
-      setIsLoading(true);
-      login(values.email, values.password)
-        .then(() => {
-          setIsLoading(false);
-        })
-        .catch((error) => {
-          setIsLoading(false);
-          console.error('Erro durante o login:', error);
-        });
-    },
+      onSubmit: (values) => {
+        setIsLoading(true);
+        login(values.email, values.password)
+          .then((result) => {
+            if (typeof result === 'string' && result !== 'Login successful') {
+              setShowAlertError(true);
+            }
+            setIsLoading(false);
+          })
+          .catch((error) => {
+            setIsLoading(false);
+            console.error('Erro genérico durante o login:', error);
+          });
+      },
   });
+
+  useEffect(() => {
+    if (showAlertError) {
+        const timer = setTimeout(() => {
+            setShowAlertError(false);
+        }, 3000);
+        return () => clearTimeout(timer);
+    }
+  }, [showAlertError]);
 
   return (
     <Box className="w-screen h-screen flex items-center justify-center" >
-      <Box
-        style={{
-          background: 'linear-gradient(145deg, rgba(243,243,243,1) 0%, rgba(255,255,255,1) 100%)',
-          padding: '23px',
-          borderRadius: 9,
-          overflow: 'hidden'
-        }}
-      >
-      
+
+      {showAlertError && (
+          <AlertGeneral message="Invalid credentials, please try again!" severityTipo='error' />
+      )}
+
         <Card 
           className='w-[438px] h-[534px]'
-          style={{borderRadius: 18}}
+          style={{
+            borderRadius: 18,
+            padding: '23px',
+            overflow: 'hidden',
+            boxShadow: `
+              0 4px 8px rgba(0, 0, 0, 0.1),
+              0 4px 12px rgba(0, 0, 0, 0.1),
+              0 4px 16px rgba(0, 0, 0, 0.1),
+              0 4px 20px rgba(0, 0, 0, 0.1),
+              0 4px 24px rgba(0, 0, 0, 0.1),
+              0 4px 28px rgba(0, 0, 0, 0.1),
+              0 4px 32px rgba(0, 0, 0, 0.1)
+            `
+          }}
         >
           <CardContent>
             <Box className="flex flex-col items-center justify-center gap-y-8 w-full h-full">
@@ -109,6 +132,5 @@ export const Login: React.FC = () => {
           </CardContent>
         </Card>
       </Box>
-    </Box>
   );
 };
