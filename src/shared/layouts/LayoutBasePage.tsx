@@ -6,13 +6,13 @@ import { AlertGeneral } from "../components/alert/alertGeneral";
 
 export const LayoutBasePages: React.FC<ILayoutBase> = ({ children, toobar }) => {
     const { isAuthenticated } = useAuthContext();
-    const [showAlert, setShowAlert] = useState<boolean>(false);
+    const [showAlertSuccess, setShowAlertSuccess] = useState<boolean>(false);
 
     useEffect(() => {
         if (isAuthenticated) {
-            setShowAlert(true);
+            setShowAlertSuccess(true);
             const timer = setTimeout(() => {
-                setShowAlert(false);
+                setShowAlertSuccess(false);
             }, 3000);
             return () => clearTimeout(timer);
         }
@@ -25,8 +25,10 @@ export const LayoutBasePages: React.FC<ILayoutBase> = ({ children, toobar }) => 
                     {toobar}
                 </Box>
             )}
-            
-            <AlertGeneral message="Login successful" showAlert={showAlert} severityTipo='success' />
+
+            {showAlertSuccess && (
+                <AlertGeneral message="Login successful" severityTipo='success' />
+            )}
 
             <Box flex={1} overflow={"auto"}>
                 {children}

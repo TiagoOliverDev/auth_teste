@@ -1,8 +1,12 @@
 
 import { Alert, Box, Collapse } from "@mui/material";
 import { IAlert } from "../../../@types/IAlert";
+import { useState } from "react";
 
-export const AlertGeneral: React.FC<IAlert> = ({ message, severityTipo, showAlert }) => {
+export const AlertGeneral: React.FC<IAlert> = ({ message, severityTipo }) => {
+
+    const [showAlertSuccess] = useState<boolean>(true);
+
     return (
         <Box
             sx={{
@@ -13,7 +17,7 @@ export const AlertGeneral: React.FC<IAlert> = ({ message, severityTipo, showAler
                 zIndex: 1000,
             }}
         >
-        <Collapse in={showAlert}>
+        <Collapse in={showAlertSuccess}>
             <Box display="flex" justifyContent="center" my={2}>
                 <Alert severity={severityTipo} style={{ width: 'fit-content' }}>
                     {message}
