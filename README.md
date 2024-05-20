@@ -3,10 +3,10 @@
 <hr/>
 
 Login
-![background](https://github.com/TiagoOliverDev/auth_teste/blob/feature/criar_doc/public/pageLogin.png)
+![background](https://github.com/TiagoOliverDev/auth_teste/blob/feature/main/public/pageLogin.png)
 
 Home 
-![background](https://github.com/TiagoOliverDev/auth_teste/blob/feature/criar_doc/public/pageHome.png)
+![background](https://github.com/TiagoOliverDev/auth_teste/blob/feature/main/public/pageHome.png)
 
 <hr/>
 
@@ -34,6 +34,19 @@ I used the following technologies:
 
 
 <hr/>
+
+# Access the demo at the link below
+
+- Testing credentials
+
+   ```
+    "email": "cliente@youdrive.com",
+    "password": "password"
+  ```
+
+- [Demo](https://auth-teste-xi.vercel.app/login)
+
+
 
 # Steps for run project
 
