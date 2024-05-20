@@ -1,5 +1,5 @@
 import { ILayoutBase } from "../../@types/ILayoutBase";
-import { Alert, Box, Collapse } from "@mui/material";
+import { Box } from "@mui/material";
 import { useAuthContext } from "../contexts";
 import { useEffect, useState } from "react";
 import { AlertGeneral } from "../components/alert/alertGeneral";
