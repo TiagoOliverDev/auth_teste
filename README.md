@@ -8,7 +8,7 @@ Login
 ![background](https://github.com/TiagoOliverDev/auth_teste/blob/feature/criar_doc/public/pageLogin.png)
 
 Home 
-![background](https://github.com/TiagoOliverDev/auth_teste/blob/feature/criar_doc/public/pageLogin.png)
+![background](https://github.com/TiagoOliverDev/auth_teste/blob/feature/criar_doc/public/pageHome.png)
 
 <hr/>
 
