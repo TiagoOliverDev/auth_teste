@@ -1,7 +1,5 @@
 <h1 align="center">B2bit Test Auth</h1>
 
-B2bit
-
 <hr/>
 
 Login
@@ -66,6 +64,15 @@ Run the tests:
   ```
   npm run test
   ```
+
+## Step 3: 
+
+Run the project:
+
+  ```
+  npm start or yarn start
+  ```
+
 
 <hr/>
 
