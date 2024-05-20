@@ -6,7 +6,7 @@ Login
 ![background](https://github.com/TiagoOliverDev/auth_teste/blob/main/public/pageLogin.png)
 
 Home 
-![background](https://github.com/TiagoOliverDev/auth_teste/blob/main/public/public/pageHome.png)
+![background](https://github.com/TiagoOliverDev/auth_teste/blob/main/public/pageHome.png)
 
 <hr/>
 
