@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuthContext } from '../../shared/contexts';
 import { UserService } from '../../shared/services/api/user/UserService';
 import { Label } from '../../shared/components/home/label';
+import { TextData } from '../../shared/components/home/textData';
 
 
 export const Home: React.FC = () => {
@@ -26,7 +27,7 @@ export const Home: React.FC = () => {
         UserService.getByToken()
             .then((result) => {
                 if (result instanceof Error) {
-                    console.error('Erro ao buscar dados do usuário', result.message);
+                    console.error('Erro ao buscar dados do usuário: ', result.message);
                     return;
                 }
 
@@ -53,7 +54,6 @@ export const Home: React.FC = () => {
                 />
             }
         >
-
             <Box className="flex items-center justify-center w-full h-full min-h-screen overflow-hidden">
                 <Card
                     className='w-[396px] h-[355px] rounded-lg'
@@ -61,40 +61,19 @@ export const Home: React.FC = () => {
                 >
                     <CardContent>
                         <Box className="flex flex-col gap-2 w-full">
-                        <Typography variant="h4" align="center" fontSize="16px">Profile Picture</Typography>
-                        <Box className="flex items-center justify-center">
-                            <Avatar style={{borderRadius: 8, width: 58, height: 56}} alt="Nome do Usuário" src={photoProfile} />
-                        </Box>
-                        
-                        <Box className="mb-4">
-                                <Label titleLabel={<span>Your <strong>Name</strong></span>}/>
-                                <Typography 
-                                    variant="body1" 
-                                    display="block" 
-                                    style={{ 
-                                        marginBottom: '15px', 
-                                        padding: '10px', 
-                                        backgroundColor: '#f5f5f5', 
-                                        borderRadius: '8px' 
-                                    }}
-                                >
-                                    {name}
-                                </Typography>
+                            <Typography variant="h4" align="center" fontSize="16px">Profile Picture</Typography>
+                            <Box className="flex items-center justify-center">
+                                <Avatar style={{borderRadius: 8, width: 58, height: 56}} alt="Nome do Usuário" src={photoProfile} />
+                            </Box>
+                            
+                            <Box className="mb-4">
+                                <Label title={<span>Your <strong>Name</strong></span>}/>
+                                <TextData data={name} />
                             </Box>
 
                             <Box>
-                                <Label titleLabel={<span>Your <strong>E-mail</strong></span>}/>
-                                <Typography 
-                                    variant="body1" 
-                                    display="block" 
-                                    style={{ 
-                                        padding: '10px', 
-                                        backgroundColor: '#f5f5f5', 
-                                        borderRadius: '8px' 
-                                    }}
-                                >
-                                    {email}
-                                </Typography>
+                                <Label title={<span>Your <strong>E-mail</strong></span>}/>
+                                <TextData data={email} />
                             </Box>
                         </Box>
                     </CardContent>
