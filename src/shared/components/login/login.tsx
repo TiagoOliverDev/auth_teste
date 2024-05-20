@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Card, CardContent, CardActions, TextField, Button, CircularProgress, InputLabel } from '@mui/material';
+import { Box, Card, CardContent, CardActions, TextField, Button, CircularProgress } from '@mui/material';
 import { useState } from "react";
 import { useAuthContext } from '../../contexts';
 import { useFormik } from 'formik';
