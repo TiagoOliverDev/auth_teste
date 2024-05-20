@@ -1,11 +1,38 @@
-import { Routes, Route } from "react-router-dom"
-import { Home } from "../../pages"
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { Home } from '../../pages';
+import { useAuthContext } from '../contexts';
+import { Login } from '../components';
+import { IPrivateRouteProps } from '../../@types/IPrivateRouteProps';
 
 export const AppRoutes = () => {
-    
+    const { isAuthenticated } = useAuthContext();
+  
+    const PrivateRoute: React.FC<IPrivateRouteProps> = ({ isAuthenticated, children }) => {
+        return isAuthenticated ? <>{children}</> : <Navigate to="/login" replace />;
+    };
+
     return (
-        <Routes>
-            <Route path="/" element={<Home />} />
-        </Routes>
-    )
-}
+      <Routes>
+            <Route 
+                path="/login" 
+                element={
+                    isAuthenticated ? <Navigate to="/home" replace /> : <Login />
+                }  
+            />
+            <Route 
+                path="/home" 
+                element={
+                    <PrivateRoute isAuthenticated={isAuthenticated}>
+                        <Home />
+                    </PrivateRoute>
+                } 
+            />
+            <Route 
+                path="/" 
+                element={<Navigate to={isAuthenticated ? "/home" : "/login"} replace />} 
+            />
+      </Routes>
+    );
+  };
+  
+
