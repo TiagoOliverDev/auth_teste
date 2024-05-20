@@ -3,10 +3,10 @@
 <hr/>
 
 Login
-![background](https://github.com/TiagoOliverDev/auth_teste/blob/feature/criar_doc/public/pageLogin.png)
+![background](https://github.com/TiagoOliverDev/auth_teste/blob/feature/main/public/pageLogin.png)
 
 Home 
-![background](https://github.com/TiagoOliverDev/auth_teste/blob/feature/criar_doc/public/pageHome.png)
+![background](https://github.com/TiagoOliverDev/auth_teste/blob/feature/main/public/pageHome.png)
 
 <hr/>
 
