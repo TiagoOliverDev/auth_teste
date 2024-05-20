@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
 import { Box, Card, CardContent, CardActions, TextField, Button, CircularProgress } from '@mui/material';
 import { useState } from "react";
-import { useAuthContext } from '../../contexts';
+import { useAuthContext } from '../../shared/contexts';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import '../../../index.css'
-import { LabelGeneral } from './labelGeneral';
-import { AlertGeneral } from '../alert/alertGeneral';
+import { LabelGeneral } from '../../shared/components/login/labelGeneral';
+import { AlertGeneral } from '../../shared/components/alert/alertGeneral';
 
 
 const b2bitLogo = 'LOGOTIPO.svg'
