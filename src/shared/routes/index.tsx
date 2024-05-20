@@ -1,7 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { Home } from '../../pages';
+import { Home, Login } from '../../pages';
 import { useAuthContext } from '../contexts';
-import { Login } from '../components';
 import { IPrivateRouteProps } from '../../@types/IPrivateRouteProps';
 
 export const AppRoutes = () => {
