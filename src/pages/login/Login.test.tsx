@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Login } from './login';
-import { AuthProvider } from '../../contexts';
-import { AuthContext } from '../../contexts/AuthContext';
-import { IAuthContextData } from '../../../@types/IAuthContextData';
+import { AuthProvider } from '../../shared/contexts';
+import { AuthContext } from '../../shared/contexts/AuthContext';
+import { IAuthContextData } from '../../@types/IAuthContextData';
 import { act } from 'react';
 
 
@@ -17,7 +17,7 @@ describe('Login Component fild submit Sign in', () => {
     test('Renders Login component and looks for Sign in', () => {
         render(
             <AuthProvider> 
-            <Login />
+                <Login />
             </AuthProvider>
         );
         const signInButton = screen.getByText(/sign in/i);  
