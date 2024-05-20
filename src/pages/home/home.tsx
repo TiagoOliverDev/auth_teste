@@ -5,6 +5,7 @@ import { DetailTools } from '../../shared/components/detailsTools/DetailTools';
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from '../../shared/contexts';
 import { UserService } from '../../shared/services/api/user/UserService';
+import { Label } from '../../shared/components/home/label';
 
 
 export const Home: React.FC = () => {
@@ -66,20 +67,7 @@ export const Home: React.FC = () => {
                         </Box>
                         
                         <Box className="mb-4">
-                                <Typography 
-                                    variant="caption" 
-                                    display="block" 
-                                    style={{
-                                        marginBottom: '4px', 
-                                        fontSize: '14px', 
-                                        fontWeight: 700, 
-                                        lineHeight: '22.5px',
-                                        textAlign: 'left',
-                                        color: '#262626'
-                                    }}
-                                >
-                                    Your Name
-                                </Typography>
+                                <Label titleLabel={<span>Your <strong>Name</strong></span>}/>
                                 <Typography 
                                     variant="body1" 
                                     display="block" 
@@ -95,20 +83,7 @@ export const Home: React.FC = () => {
                             </Box>
 
                             <Box>
-                                <Typography 
-                                    variant="caption" 
-                                    display="block" 
-                                    style={{
-                                        marginBottom: '4px', 
-                                        fontSize: '14px', 
-                                        fontWeight: 700, 
-                                        lineHeight: '22.5px',
-                                        textAlign: 'left',
-                                        color: '#262626'
-                                    }}
-                                >
-                                    Your E-mail
-                                </Typography>
+                                <Label titleLabel={<span>Your <strong>E-mail</strong></span>}/>
                                 <Typography 
                                     variant="body1" 
                                     display="block" 
