@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Card, CardContent, Typography, TextField, Avatar } from '@mui/material';
+import { Box, Card, CardContent, Typography, Avatar } from '@mui/material';
 import { LayoutBasePages } from '../../shared/layouts';
 import { DetailTools } from '../../shared/components/detailsTools/DetailTools';
 import { useNavigate } from "react-router-dom";
@@ -65,19 +65,62 @@ export const Home: React.FC = () => {
                             <Avatar style={{borderRadius: 8, width: 58, height: 56}} alt="Nome do Usuário" src={photoProfile} />
                         </Box>
                         
-                        <TextField
-                            fullWidth
-                            type="name"
-                            label='Your Name'
-                            value={name}
-                        />
-        
-                        <TextField        
-                            fullWidth       
-                            label='Your Email'      
-                            type="email"        
-                            value={email}
-                        />  
+                        <Box className="mb-4">
+                                <Typography 
+                                    variant="caption" 
+                                    display="block" 
+                                    style={{
+                                        marginBottom: '4px', 
+                                        fontSize: '14px', 
+                                        fontWeight: 700, 
+                                        lineHeight: '22.5px',
+                                        textAlign: 'left',
+                                        color: '#262626'
+                                    }}
+                                >
+                                    Your Name
+                                </Typography>
+                                <Typography 
+                                    variant="body1" 
+                                    display="block" 
+                                    style={{ 
+                                        marginBottom: '15px', 
+                                        padding: '10px', 
+                                        backgroundColor: '#f5f5f5', 
+                                        borderRadius: '8px' 
+                                    }}
+                                >
+                                    {name}
+                                </Typography>
+                            </Box>
+
+                            <Box>
+                                <Typography 
+                                    variant="caption" 
+                                    display="block" 
+                                    style={{
+                                        marginBottom: '4px', 
+                                        fontSize: '14px', 
+                                        fontWeight: 700, 
+                                        lineHeight: '22.5px',
+                                        textAlign: 'left',
+                                        color: '#262626'
+                                    }}
+                                >
+                                    Your E-mail
+                                </Typography>
+                                <Typography 
+                                    variant="body1" 
+                                    display="block" 
+                                    style={{ 
+                                        padding: '10px', 
+                                        backgroundColor: '#f5f5f5', 
+                                        borderRadius: '8px' 
+                                    }}
+                                >
+                                    {email}
+                                </Typography>
+                            </Box>
                         </Box>
                     </CardContent>
                 </Card>
