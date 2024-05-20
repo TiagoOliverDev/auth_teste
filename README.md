@@ -3,10 +3,10 @@
 <hr/>
 
 Login
-![background](https://github.com/TiagoOliverDev/auth_teste/blob/feature/main/public/pageLogin.png)
+![background](https://github.com/TiagoOliverDev/auth_teste/blob/main/public/pageLogin.png)
 
 Home 
-![background](https://github.com/TiagoOliverDev/auth_teste/blob/feature/main/public/pageHome.png)
+![background](https://github.com/TiagoOliverDev/auth_teste/blob/main/public/public/pageHome.png)
 
 <hr/>
 
@@ -40,11 +40,11 @@ I used the following technologies:
 - Testing credentials
 
    ```
-    "email": "cliente@youdrive.com",
+    "email": "cliente@youdrive.com"
     "password": "password"
   ```
 
-- [Demo](https://auth-teste-xi.vercel.app/login)
+[Demo](https://auth-teste-xi.vercel.app/login)
 
 
 
