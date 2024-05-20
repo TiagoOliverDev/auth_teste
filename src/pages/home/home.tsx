@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Card, CardContent, Typography, TextField, Avatar } from '@mui/material';
+import { Box, Card, CardContent, Typography, Avatar } from '@mui/material';
 import { LayoutBasePages } from '../../shared/layouts';
 import { DetailTools } from '../../shared/components/detailsTools/DetailTools';
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from '../../shared/contexts';
 import { UserService } from '../../shared/services/api/user/UserService';
+import { Label } from '../../shared/components/home/label';
+import { TextData } from '../../shared/components/home/textData';
 
 
 export const Home: React.FC = () => {
@@ -25,7 +27,7 @@ export const Home: React.FC = () => {
         UserService.getByToken()
             .then((result) => {
                 if (result instanceof Error) {
-                    console.error('Erro ao buscar dados do usuário', result.message);
+                    console.error('Erro ao buscar dados do usuário: ', result.message);
                     return;
                 }
 
@@ -52,27 +54,27 @@ export const Home: React.FC = () => {
                 />
             }
         >
-
-            <Box className="w-screen h-screen flex items-center justify-center">
-                <Card>
+            <Box className="flex items-center justify-center w-full h-full min-h-screen overflow-hidden">
+                <Card
+                    className='w-[396px] h-[355px] rounded-lg'
+                    style={{borderRadius: 16}}
+                >
                     <CardContent>
-                        <Box className="flex flex-col gap-2 w-72">
-                        <Typography variant="h4" align="center">Profile Picture</Typography>
-                        <Avatar alt="Nome do Usuário" src={photoProfile} />
-                        
-                        <TextField
-                            fullWidth
-                            type="name"
-                            label='Your Name'
-                            value={name}
-                        />
-        
-                        <TextField        
-                            fullWidth       
-                            label='Your Email'      
-                            type="email"        
-                            value={email}
-                        />  
+                        <Box className="flex flex-col gap-2 w-full">
+                            <Typography variant="h4" align="center" fontSize="16px">Profile Picture</Typography>
+                            <Box className="flex items-center justify-center">
+                                <Avatar style={{borderRadius: 8, width: 58, height: 56}} alt="Nome do Usuário" src={photoProfile} />
+                            </Box>
+                            
+                            <Box className="mb-4">
+                                <Label title={<span>Your <strong>Name</strong></span>}/>
+                                <TextData data={name} />
+                            </Box>
+
+                            <Box>
+                                <Label title={<span>Your <strong>E-mail</strong></span>}/>
+                                <TextData data={email} />
+                            </Box>
                         </Box>
                     </CardContent>
                 </Card>

@@ -34,7 +34,7 @@ describe('Login Component input fields and submit button', () => {
         );
   
       const emailInput = screen.getByLabelText('E-mail');
-      const passwordInput = screen.getByLabelText('Senha');
+      const passwordInput = screen.getByLabelText('Password');
   
       expect(emailInput).toBeInTheDocument();
       expect(passwordInput).toBeInTheDocument();
@@ -71,7 +71,7 @@ describe('Login Component submit form to login', () => {
         //eslint-disable-next-line testing-library/no-unnecessary-act
         await act(async () => {
             userEvent.type(screen.getByLabelText('E-mail'), 'cliente@youdrive.com');
-            userEvent.type(screen.getByLabelText('Senha'), 'password');
+            userEvent.type(screen.getByLabelText('Password'), 'password');
             userEvent.click(screen.getByText('Sign In'));
         });
     
